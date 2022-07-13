@@ -1,23 +1,36 @@
 <template>
   <div class="wrapper-home">
     <b-container class="h-100">
-      <b-row class="align-items-center justify-content-center h-100">
+      <b-row
+        class="
+          align-items-center align-content-center
+          justify-content-center
+          h-100
+          gap-20
+        "
+        gap="20"
+      >
         <b-col cols="12" md="6">
           <h1 class="titles home-title">Consultoria e transformação digital</h1>
           <p class="texts home-text">
-            Se você está pensando em aderir ao mundo digital, e colocar a sua
-            empresa online, você está no lugar certo. Na britze oferecemos
-            serviços de desenvolvimento e design de aplicações web, do início ao
-            fim, buscando sempre as melhores práticas de trabalho e tecnologias
-            atuais.
+            Somos a britze, uma empresa de desenvolvimento e design de aplicações web. 
+            Está pensando em aderir ao mundo digital, e colocar a sua
+            empresa online?
           </p>
-          <p class="texts home-text">Quer saber mais?</p>
-          <b-button variant="dark" class="py-2 px-3 texts"
-            >Entre em contato com a gente</b-button
+          <b-button variant="dark" size="sm" class="py-2 px-3 texts"
+            >Fale com a gente</b-button
           >
         </b-col>
-        <b-col cols="12" md="6">
-          <img :src="require('../assets/home-img.svg')" alt="" />
+        <b-col cols="12" md="6" class="mt-5 mt-md-0">
+          <img
+            :src="require('../assets/home-img.svg')"
+            class="home-img"
+            alt="
+              Uma animação de um homem sentado com um notebook no colo,
+              na frente de alguns dispositivos mobile e desktop e engrenagens, passando a imagem de que 
+              as aplicações estão rodando com sucesso e de maneira responsiva
+            "
+          />
         </b-col>
       </b-row>
     </b-container>
@@ -45,19 +58,38 @@ export default {};
 .home-title {
   color: white;
   font-weight: 700;
-  font-size: 52px;
+  font-size: 40px;
+
+  @include lg {
+    font-size: 32px;
+  }
 
   @include md {
-    font-size: 32px;
+    font-size: 24px;
   }
 }
 
 .home-text {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 
   @include md {
-    font-size: 18px;
+    font-size: 16px;
+  }
+}
+
+.home-img {
+  margin: auto;
+  display: block;
+
+  width: 440px;
+
+  @include lg {
+    width: 360px;
+  }
+
+  @include md {
+    width: 280px;
   }
 }
 </style>

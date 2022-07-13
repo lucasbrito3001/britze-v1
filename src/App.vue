@@ -26,8 +26,10 @@ export default {
 
 :root {
   --primary: rgb(0, 225, 255);
+  --light-primary: rgb(209, 253, 255);
+  --dark-primary: rgb(0, 61, 70);
+
   --secondary: rgb(255, 0, 149);
-  --light-primary: rgb(225, 254, 255);
 }
 
 * {
@@ -59,5 +61,20 @@ ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }
 </style>
