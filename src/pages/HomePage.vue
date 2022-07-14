@@ -9,12 +9,8 @@
         "
       >
         <b-col cols="12" lg="6">
-          <h1 class="titles home-title mb-4">Consultoria e transformação digital</h1>
-          <p class="texts home-text mb-4">
-            Somos a <strong class="britze-name">britze</strong>, uma empresa de desenvolvimento e design de aplicações web. 
-            Está pensando em aderir ao mundo digital, e colocar a sua
-            empresa online?
-          </p>
+          <h1 class="titles home-title mb-4" v-html="TEXTS_JSON[idiom].main_title"></h1>
+          <p class="texts home-text mb-4" v-html="TEXTS_JSON[idiom].main_text"></p>
           <b-button variant="dark" size="sm" class="py-2 px-3 texts"
             >Fale com a gente</b-button
           >
@@ -36,7 +32,13 @@
 </template>
 
 <script>
-export default {};
+import TEXTS_JSON from "../static/texts/home.json"
+export default {
+  data: () => ({
+    TEXTS_JSON: TEXTS_JSON,
+    idiom: "br"
+  })
+};
 </script>
 
 <style scoped lang="scss">

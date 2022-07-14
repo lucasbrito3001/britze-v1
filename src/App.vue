@@ -6,11 +6,17 @@
     <section id="home-page" class="pages">
       <HomePage />
     </section>
-    <section class="pages">
+    <section class="pages py-5">
       <AboutPage />
     </section>
-    <section id="our-services" class="pages">
+    <section id="our-services" class="pages py-5">
       <OurServices />
+    </section>
+    <section id="our-techs" class="pages py-5">
+      <OurTechs />
+    </section>
+    <section id="our-contacts" class="pages py-5">
+      <OurContacts />
     </section>
   </div>
 </template>
@@ -20,13 +26,17 @@ import Header from "./components/HeaderNavbar.vue";
 import HomePage from "./pages/HomePage.vue";
 import AboutPage from "./pages/AboutPage.vue";
 import OurServices from "./components/OurServices.vue";
+import OurTechs from "./components/OurTechs.vue";
+import OurContacts from "./components/OurContacts.vue";
 export default {
   name: "App",
   components: {
     Header,
     HomePage,
     AboutPage,
-    OurServices
+    OurServices,
+    OurTechs,
+    OurContacts
   },
 };
 </script>

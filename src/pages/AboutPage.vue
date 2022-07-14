@@ -1,12 +1,9 @@
 <template>
-  <div class="wrapper-about py-5">
+  <div class="wrapper-about">
     <b-container>
       <b-row>
         <b-col class="mb-3 mb-lg-0 py-lg-5" cols="12" lg="6">
-          <h1 class="titles">
-            Somos a sua entrada no mundo digital, nosso foco é trazer
-            visibilidade e modernidade para o seu negócio
-          </h1>
+          <h1 class="titles" v-html="TEXTS_JSON[idiom].about_title"></h1>
         </b-col>
 
         <b-col class="py-lg-5" cols="12" lg="6">
@@ -32,7 +29,13 @@
 </template>
 
 <script>
-export default {};
+import TEXTS_JSON from "../static/texts/about.json"
+export default {
+  data: () => ({
+    TEXTS_JSON: TEXTS_JSON,
+    idiom: "br"
+  })
+};
 </script>
 
 <style scoped lang="scss">
