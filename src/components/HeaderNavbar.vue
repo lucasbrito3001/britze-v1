@@ -1,42 +1,45 @@
 <template>
-  <div :class="`header-comp ${active ? 'extended' : 'collapsed'}`">
-    <main class="header-comp-main">
-      <img
-        class="logo-full-img"
-        :src="require('../assets/logo-full2.png')"
-        alt="logo da britze com uma imagem de 3 gotas juntas na diagonal e o nome da empresa"
-      />
-      <span
-        :class="`menu-sdw ${active ? 'active' : ''}`"
-        @click="active = !active"
-      ></span>
-    </main>
+  <div :class="`wrapper ${isScrolled ? 'scrolled' : ''}`">
+    <div :class="`header-comp ${active ? 'extended' : ''}`">
+      <main class="header-comp-main">
+        <span class="texts header-brand">britze</span>
 
-    <nav class="navbar">
-      <ul class="navbar-list">
-        <li class="navbar-list-items">Sobre</li>
-        <li class="navbar-list-items">Serviços</li>
-        <li class="navbar-list-items">Tecnologias</li>
-        <li class="navbar-list-items">Contato</li>
-        <li class="navbar-list-social-networks">
-          <ul class="navbar-list-social-networks-items">
-            <li class="navbar-list-items"><b-icon-instagram /></li>
-            <li class="navbar-list-items"><b-icon-linkedin /></li>
-            <li class="navbar-list-items"><b-icon-whatsapp /></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
+        <span
+          :class="`menu-sdw ${active ? 'active' : ''}`"
+          @click="active = !active"
+        ></span>
+      </main>
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-list-items">Sobre</li>
+          <li class="navbar-list-items">Serviços</li>
+          <li class="navbar-list-items">Tecnologias</li>
+          <li class="navbar-list-items">Contato</li>
+          <li class="navbar-list-social-networks">
+            <ul class="navbar-list-social-networks-items">
+              <li class="navbar-list-items"><b-icon-instagram /></li>
+              <li class="navbar-list-items"><b-icon-linkedin /></li>
+              <li class="navbar-list-items"><b-icon-whatsapp /></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   mounted() {
-    this.active = window.innerWidth > 768;
+    this.active = window.innerWidth > 992;
+
+    document.addEventListener('scroll', () => {
+      this.isScrolled = window.scrollY > 200
+    })
   },
   data: () => ({
     active: false,
+    isScrolled: false
   }),
 };
 </script>
@@ -44,10 +47,23 @@ export default {
 <style scoped lang="scss">
 @import "../static/sass.scss";
 
+.header-brand {
+  font-size: 32px;
+  color: white;
+
+  @include lg {
+    font-size: 28px;
+  }
+
+  @include md {
+    font-size: 24px;
+  }
+}
+
 .menu-sdw {
   display: none;
 
-  @include md {
+  @include lg {
     display: block;
     width: 30px;
     border-top: 2px solid;
@@ -81,36 +97,61 @@ export default {
 }
 
 /* Header wrapper */
+.wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 10vh;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.055);
+  transition: .4s;
+
+  @include lg {
+    height: 8vh;
+  }
+}
+
+.wrapper.scrolled {
+  height: 7.5vh;
+  background-color: rgba(0, 0, 0, 0.747);
+
+  @include lg {
+    height: 6.5vh;
+  }
+}
 
 .header-comp {
-  position: fixed;
-  top: 0;
-
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  height: 10vh;
-  width: 100vw;
-  z-index: 10;
-  padding: 15px 50px;
-  background-color: rgba(0, 0, 0, 0.055);
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 0px;
   transition: 0.4s;
 
-  @include md {
+  @include lg {
     display: block;
     overflow-y: hidden;
-    height: 6vh;
     padding: 5px 20px;
     flex-direction: column;
     align-content: center;
   }
 }
 
+.wrapper.scrolled .header-comp-main {
+  @include lg {
+    height: calc(6.5vh - 10px);
+  }
+}
+
 .header-comp.extended {
-  @include md {
+  @include lg {
     height: 100vh;
     background-color: var(--dark-primary);
+    overflow-y: hidden;
   }
 }
 
@@ -120,12 +161,18 @@ export default {
   display: flex;
   align-items: center;
   height: 100%;
+  transition: .4s;
 
-  @include md {
-    height: calc(6vh - 10px);
+  @include lg {
+    height: calc(8vh - 10px);
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    padding: 0 100px;
+  }
+
+  @include md {
+    padding: 0;
   }
 }
 
@@ -133,7 +180,7 @@ export default {
   height: 100%;
   max-width: 140px;
 
-  @include md {
+  @include lg {
     max-width: 110px;
   }
 }
@@ -142,7 +189,7 @@ export default {
   display: block;
   height: 100%;
 
-  @include md {
+  @include lg {
     display: flex;
     flex-direction: column;
     height: 93vh;
@@ -161,7 +208,7 @@ export default {
   color: white;
   align-items: center;
 
-  @include md {
+  @include lg {
     flex-direction: column;
     justify-content: center;
     font-size: 24px;
@@ -173,17 +220,24 @@ export default {
   padding: 2px 8px;
   transition: .3s;
   border: 2px solid transparent;
+  font-size: 18px;
+  font-weight: 500;
+
+  @include lg {
+    font-size: 24px;
+  }
 }
 
 .navbar-list-items:hover {
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+  /* border-top: 2px solid white;
+  border-bottom: 2px solid white; */
+  color: var(--secondary);
 }
 
 .navbar-list-social-networks {
   display: none;
 
-  @include md {
+  @include lg {
     display: block;
     width: 100%;
     margin-top: 50px;
