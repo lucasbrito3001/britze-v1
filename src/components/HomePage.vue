@@ -11,9 +11,7 @@
         <b-col cols="12" lg="6">
           <h1 class="titles home-title mb-4" v-html="TEXTS_JSON[idiom].main_title"></h1>
           <p class="texts home-text mb-4" v-html="TEXTS_JSON[idiom].main_text"></p>
-          <b-button variant="dark" size="sm" class="py-2 px-3 texts"
-            >Fale com a gente</b-button
-          >
+          <ContactButton/>
         </b-col>
         <b-col cols="12" lg="6" class="mt-5 mt-md-0">
           <img
@@ -33,7 +31,11 @@
 
 <script>
 import TEXTS_JSON from "../static/texts/home.json"
+import ContactButton from "./ContactButton.vue"
 export default {
+  components: {
+    ContactButton
+  },
   data: () => ({
     TEXTS_JSON: TEXTS_JSON,
     idiom: "br"

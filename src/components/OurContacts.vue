@@ -3,7 +3,7 @@
         <b-container>
             <b-row>
                 <b-col>
-                    <h1>footer</h1>
+                    <h1 class="titles">Fale com a gente</h1>
                 </b-col>
             </b-row>
         </b-container>

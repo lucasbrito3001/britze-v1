@@ -6,7 +6,7 @@
     <section id="home-page" class="pages">
       <HomePage />
     </section>
-    <section class="pages py-5">
+    <section id="about-page" class="pages py-5">
       <AboutPage />
     </section>
     <section id="our-services" class="pages py-5">
@@ -23,8 +23,8 @@
 
 <script>
 import Header from "./components/HeaderNavbar.vue";
-import HomePage from "./pages/HomePage.vue";
-import AboutPage from "./pages/AboutPage.vue";
+import HomePage from "./components/HomePage.vue";
+import AboutPage from "./components/AboutPage.vue";
 import OurServices from "./components/OurServices.vue";
 import OurTechs from "./components/OurTechs.vue";
 import OurContacts from "./components/OurContacts.vue";
@@ -38,6 +38,9 @@ export default {
     OurTechs,
     OurContacts
   },
+  mounted() {
+    console.log(this.$store)
+  }
 };
 </script>
 
@@ -52,6 +55,7 @@ export default {
 
   --secondary: #F7365C;
   --tertiary: #F7EB05;
+  --dark: #161616;
 }
 
 * {
@@ -104,7 +108,7 @@ export default {
   font-family: "Comfortaa", sans-serif;
   font-size: 22px;
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 2;
 
   @include lg {
     font-size: 20px;
