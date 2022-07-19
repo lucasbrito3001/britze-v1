@@ -3,19 +3,19 @@
     <header>
       <Header />
     </header>
-    <section id="home-page" class="pages">
+    <section id="home" class="pages">
       <HomePage />
     </section>
-    <section id="about-page" class="pages py-5">
+    <section id="about" class="pages py-5">
       <AboutPage />
     </section>
-    <section id="our-services" class="pages py-5">
+    <section id="services" class="pages py-5">
       <OurServices />
     </section>
-    <section id="our-techs" class="pages py-5">
+    <section id="techs" class="pages py-5">
       <OurTechs />
     </section>
-    <section id="our-contacts" class="pages py-5">
+    <section id="contacts" class="pages py-5">
       <OurContacts />
     </section>
   </div>
@@ -38,9 +38,6 @@ export default {
     OurTechs,
     OurContacts
   },
-  mounted() {
-    console.log(this.$store)
-  }
 };
 </script>
 
@@ -73,7 +70,7 @@ export default {
   max-width: 100vw;
 }
 
-#home-page {
+#home {
   height: 95vh;
 
   @include lg {
@@ -85,7 +82,7 @@ export default {
   }
 }
 
-#our-services {
+#services {
   background-color: var(--light-primary);
 }
 

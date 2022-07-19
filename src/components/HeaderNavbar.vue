@@ -11,15 +11,29 @@
       </main>
       <nav class="navbar">
         <ul class="navbar-list">
-          <li class="navbar-list-items">Sobre</li>
-          <li class="navbar-list-items">Serviços</li>
-          <li class="navbar-list-items">Tecnologias</li>
-          <li class="navbar-list-items">Contato</li>
+          <a
+            class="navbar-list-items-link"
+            :href="item.target"
+            v-for="(item, idx) in itemsNavbar"
+            :key="idx"
+          >
+            <li class="navbar-list-items">
+              {{ item.text }}
+            </li>
+          </a>
           <li class="navbar-list-social-networks">
             <ul class="navbar-list-social-networks-items">
-              <li class="navbar-list-items"><b-icon-instagram /></li>
-              <li class="navbar-list-items"><b-icon-linkedin /></li>
-              <li class="navbar-list-items"><b-icon-whatsapp /></li>
+              <a href="https://instagram.com/lucasdebrito12/" target="_blank" class="navbar-list-items-link">
+                <li class="navbar-list-items"><b-icon-instagram /></li>
+              </a>
+
+              <a href="https://linkedin.com/in/webdevbrito" target="_blank" class="navbar-list-items-link">
+                <li class="navbar-list-items"><b-icon-linkedin /></li>
+              </a>
+
+              <a href="https://wa.me/+5518997351747" target="_blank" class="navbar-list-items-link">
+                <li class="navbar-list-items"><b-icon-whatsapp /></li>
+              </a>
             </ul>
           </li>
         </ul>
@@ -29,17 +43,25 @@
 </template>
 
 <script>
+import Texts from './TextsMixins.vue';
 export default {
+  mixins: [Texts],
   mounted() {
     this.active = window.innerWidth > 992;
 
-    document.addEventListener('scroll', () => {
-      this.isScrolled = window.scrollY > 200
-    })
+    document.addEventListener("scroll", () => {
+      this.isScrolled = window.scrollY > 200;
+    });
   },
   data: () => ({
     active: false,
-    isScrolled: false
+    isScrolled: false,
+    itemsNavbar: [
+      { text: "Sobre", target: "#about" },
+      { text: "Serviços", target: "#services" },
+      { text: "Tecnologias", target: "#techs" },
+      { text: "Contato", target: "#contacts" },
+    ],
   }),
 };
 </script>
@@ -104,7 +126,7 @@ export default {
   top: 0;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.055);
-  transition: .4s;
+  transition: 0.4s;
 
   @include lg {
     height: 8vh;
@@ -161,7 +183,7 @@ export default {
   display: flex;
   align-items: center;
   height: 100%;
-  transition: .4s;
+  transition: 0.4s;
 
   @include lg {
     height: calc(8vh - 10px);
@@ -216,9 +238,18 @@ export default {
   }
 }
 
+.navbar-list-items-link {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-list-items-link:hover {
+  color: var(--secondary);
+}
+
 .navbar-list-items {
   padding: 2px 8px;
-  transition: .3s;
+  transition: 0.3s;
   border: 2px solid transparent;
   font-size: 18px;
   font-weight: 500;
@@ -226,12 +257,6 @@ export default {
   @include lg {
     font-size: 24px;
   }
-}
-
-.navbar-list-items:hover {
-  /* border-top: 2px solid white;
-  border-bottom: 2px solid white; */
-  color: var(--secondary);
 }
 
 .navbar-list-social-networks {

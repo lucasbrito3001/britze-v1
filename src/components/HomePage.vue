@@ -9,8 +9,8 @@
         "
       >
         <b-col cols="12" lg="6">
-          <h1 class="titles home-title mb-4" v-html="TEXTS_JSON[idiom].main_title"></h1>
-          <p class="texts home-text mb-4" v-html="TEXTS_JSON[idiom].main_text"></p>
+          <h1 class="titles home-title mb-4" v-html="HOME_TEXTS[lang].main_title"></h1>
+          <p class="texts home-text mb-4" v-html="HOME_TEXTS[lang].main_text"></p>
           <ContactButton/>
         </b-col>
         <b-col cols="12" lg="6" class="mt-5 mt-md-0">
@@ -30,16 +30,13 @@
 </template>
 
 <script>
-import TEXTS_JSON from "../static/texts/home.json"
 import ContactButton from "./ContactButton.vue"
+import Texts from './TextsMixins.vue'
 export default {
+  mixins: [Texts],
   components: {
     ContactButton
   },
-  data: () => ({
-    TEXTS_JSON: TEXTS_JSON,
-    idiom: "br"
-  })
 };
 </script>
 
