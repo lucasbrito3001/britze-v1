@@ -2,12 +2,19 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import HOME_TEXTS from '../static/texts/home.json'
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        lang: 'en'
+        lang: 'pt',
+        texts_home: HOME_TEXTS
     },
-    mutations: {},
+    mutations: {
+        changeLang(state, newValue) {
+            state.lang = newValue
+        }
+    },
     getters: {}
 })

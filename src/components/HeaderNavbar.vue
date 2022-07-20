@@ -21,6 +21,15 @@
               {{ item.text }}
             </li>
           </a>
+
+          <li>
+            <select v-model="currentLang" @change="changeLang(currentLang)">
+              <option value="pt">PT</option>
+              <option value="en">EN</option>
+              <option value="es">ES</option>
+            </select>
+          </li>
+
           <li class="navbar-list-social-networks">
             <ul class="navbar-list-social-networks-items">
               <a href="https://instagram.com/lucasdebrito12/" target="_blank" class="navbar-list-items-link">
@@ -56,13 +65,23 @@ export default {
   data: () => ({
     active: false,
     isScrolled: false,
-    itemsNavbar: [
-      { text: "Sobre", target: "#about" },
-      { text: "Serviços", target: "#services" },
-      { text: "Tecnologias", target: "#techs" },
-      { text: "Contato", target: "#contacts" },
-    ],
+    currentLang: 'pt'
   }),
+  computed: {
+    itemsNavbar: function () {
+      return [
+        { text: this.NAVBAR_TEXTS.about[this.lang], target: "#about" },
+        { text: this.NAVBAR_TEXTS.services[this.lang], target: "#services" },
+        { text: this.NAVBAR_TEXTS.techs[this.lang], target: "#techs" },
+        { text: this.NAVBAR_TEXTS.contacts[this.lang], target: "#contacts" },
+      ]
+    }
+  },
+  methods: {
+    changeLang(lang) {
+      this.$store.commit('changeLang', lang)
+    }
+  }
 };
 </script>
 
