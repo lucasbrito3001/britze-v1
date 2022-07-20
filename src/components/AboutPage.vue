@@ -3,14 +3,14 @@
     <b-container>
       <b-row>
         <b-col cols="12" lg="6">
-          <h1 class="titles about-title"> {{ ABOUT_TEXTS[lang].about_title }} </h1>
+          <h1 class="titles about-title"> {{ ABOUT_TEXTS.about_title[lang] }} </h1>
 
           <ContactButton class="mt-5"/>
         </b-col>
 
         <b-col class="mt-5 mt-lg-0 d-flex align-items-center justify-content-center flex-column" cols="12" lg="6">
-          <p class="texts"> {{ ABOUT_TEXTS[lang].about_first_text }} </p>
-          <p class="texts"> {{ ABOUT_TEXTS[lang].about_second_text }} </p>
+          <p class="texts"> {{ ABOUT_TEXTS.about_first_text[lang] }} </p>
+          <p class="texts"> {{ ABOUT_TEXTS.about_second_text[lang] }} </p>
         </b-col>
       </b-row>
     </b-container>
