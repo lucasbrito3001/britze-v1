@@ -1,6 +1,6 @@
 <template>
   <b-button
-    href="#our-contacts"
+    href="#contacts"
     variant="dark"
     size="sm"
     class="py-2 px-5 texts contact-button btn-dark"

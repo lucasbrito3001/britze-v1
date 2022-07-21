@@ -22,12 +22,31 @@
             </li>
           </a>
 
-          <li>
-            <select v-model="currentLang" @change="changeLang(currentLang)">
-              <option value="pt">PT</option>
-              <option value="en">EN</option>
-              <option value="es">ES</option>
-            </select>
+          <li @mouseenter="showLangsOptions = true" @mouseleave="showLangsOptions = false">
+            <img 
+              :src="require(`../assets/flags/${$store.state.lang}.png`)" 
+              class="me-2" 
+              width="32"
+              alt="bandeira referente ao idioma selecionado"
+            >
+            <span> {{ $store.state.lang.toUpperCase() }} </span>
+
+            <ul v-if="showLangsOptions" class="list-langs">
+              <li 
+                value="pt" v-for="(lang, idx) in langs" 
+                :key="idx" 
+                @click="showLangOptions = false"
+                class="list-langs-items"
+              > 
+                <img 
+                  :src="require(`../assets/flags/${lang}.png`)" 
+                  class="me-2" 
+                  width="32"
+                  alt="bandeira referente ao idioma selecionado"
+                >
+                {{ lang.toUpperCase() }} 
+              </li>
+            </ul>
           </li>
 
           <li class="navbar-list-social-networks">
@@ -65,7 +84,13 @@ export default {
   data: () => ({
     active: false,
     isScrolled: false,
-    currentLang: 'pt'
+    currentLang: 'pt',
+    showLangsOptions: false,
+    langs: [
+      "pt",
+      "en",
+      "es"
+    ]
   }),
   computed: {
     itemsNavbar: function () {
@@ -80,6 +105,9 @@ export default {
   methods: {
     changeLang(lang) {
       this.$store.commit('changeLang', lang)
+    },
+    showLangs() {
+      this.showLangsOptions = true
     }
   }
 };
@@ -300,5 +328,28 @@ export default {
 
 .navbar-list-social-networks-items li {
   font-size: 28px;
+}
+
+.list-langs {
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.list-langs-items {
+  padding: 16px 24px;
+  text-align: center;
+  transition: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-langs-items:hover {
+  background-color: var(--primary);
+  color: white;
 }
 </style>
