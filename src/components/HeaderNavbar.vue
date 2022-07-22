@@ -192,7 +192,7 @@ export default {
 
 .wrapper.scrolled {
   height: 7.5vh;
-  background-color: rgba(0, 0, 0, 0.747);
+  background-color: rgba(0, 0, 0, 0.856);
 
   @include lg {
     height: 6.5vh;
