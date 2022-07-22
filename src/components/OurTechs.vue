@@ -48,7 +48,7 @@ export default {
   data: () => ({
     TEXTS: TEXTS,
     carouselSettings: {
-      arrows: true,
+      arrows: false,
       dots: false,
       infinite: true,
       slidesToShow: 8,
@@ -62,11 +62,9 @@ export default {
       pauseOnHover: false,
     },
   }),
+  mounted() {
+    const maxQuantity = parseInt(window.innerWidth / 120)
+    this.carouselSettings.slidesToShow = maxQuantity > 8 ? 8 : maxQuantity
+  }
 };
 </script>
-
-<style scoped>
-.wrapper {
-  min-height: 40vh;
-}
-</style>
