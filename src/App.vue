@@ -95,11 +95,14 @@ export default {
   color: white;
 }
 
-.titles {
+.titles, .secondary-titles {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
-  font-size: 46px;
   line-height: 1.5;
+}
+
+.titles {
+  font-size: 46px;
 
   @include lg {
     font-size: 38px;
@@ -107,6 +110,18 @@ export default {
 
   @include md {
     font-size: 32px;
+  }
+}
+
+.secondary-titles {
+  font-size: 36px;
+
+  @include lg {
+    font-size: 30px;
+  }
+
+  @include md {
+    font-size: 24px;
   }
 }
 

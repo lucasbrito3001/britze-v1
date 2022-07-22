@@ -23,20 +23,22 @@
           </a>
 
           <li @mouseenter="showLangsOptions = true" @mouseleave="showLangsOptions = false">
-            <img 
-              :src="require(`../assets/flags/${$store.state.lang}.png`)" 
-              class="me-2" 
-              width="32"
-              alt="bandeira referente ao idioma selecionado"
-            >
-            <span> {{ $store.state.lang.toUpperCase() }} </span>
+            <span class="navbar-list-items-lang">
+              <img
+                :src="require(`../assets/flags/${$store.state.lang}.png`)"
+                class="me-2"
+                width="32"
+                alt="bandeira referente ao idioma selecionado"
+              >
+              <span> {{ $store.state.lang.toUpperCase() }} </span>
+            </span>
 
             <ul v-if="showLangsOptions" class="list-langs">
-              <li 
-                value="pt" v-for="(lang, idx) in langs" 
-                :key="idx" 
-                @click="showLangOptions = false"
+              <li
                 class="list-langs-items"
+                v-for="(lang, idx) in langs" 
+                :key="idx" 
+                @click="changeLang(lang)"
               > 
                 <img 
                   :src="require(`../assets/flags/${lang}.png`)" 
@@ -105,9 +107,7 @@ export default {
   methods: {
     changeLang(lang) {
       this.$store.commit('changeLang', lang)
-    },
-    showLangs() {
-      this.showLangsOptions = true
+      this.showLangsOptions = false
     }
   }
 };
@@ -337,6 +337,17 @@ export default {
   padding: 0;
   margin: 0;
   z-index: 10;
+}
+
+.navbar-list-items-lang {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.829);
+  padding: 0 8px;
+}
+
+.navbar-list-items-lang, .list-langs-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .list-langs-items {

@@ -2,8 +2,25 @@
     <div class="wrapper">
         <b-container>
             <b-row>
-                <b-col>
-                    <h1 class="titles">Nossos serviços</h1>
+                <b-col cols="12">
+                    <h1 class="titles"> {{ TEXTS.title[lang] }} </h1>
+                </b-col>
+            </b-row>
+
+            <b-row class="justify-content-evenly mt-5 p-2">
+                <b-col 
+                    cols="12" 
+                    md="6" 
+                    lg="4"
+                    v-for="(service, idx) in TEXTS.services"
+                    :key="idx"
+                    class="p-2"
+                >
+                    <div class="text-center shadow rounded mt-3 mt-md-0 py-3 px-2 bg-light h-100">
+                        <img :src="require(`../assets/ourServices/${service.tag}.svg`)" :alt="service.img_alt[lang]" width="230px" height="230px">
+                        <h2 class="secondary-titles">{{ service.title[lang] }}</h2>
+                        <p class="texts"> {{ service.desc[lang] }} </p>
+                    </div>
                 </b-col>
             </b-row>
         </b-container>
@@ -15,7 +32,3 @@ export default {
 
 }
 </script>
-
-<style>
-
-</style>
