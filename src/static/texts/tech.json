@@ -1,0 +1,29 @@
+{
+    "title": {
+        "pt": "Tecnologias",
+        "en": "Technologies",
+        "es": "Tecnologías"
+    },
+    "techs" : [
+        "VueJS",
+        "ReactJS",
+        "CSS3",
+        "HTML5",
+        "NodeJS",
+        "Photoshop",
+        "Illustrator",
+        "MySQL",
+        "MongoDB",
+        "Bootstrap",
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "Canva",
+        "SASS",
+        "Figma",
+        "Google",
+        "Cloud",
+        "AWS",
+        "Docker"
+    ]
+}
