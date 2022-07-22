@@ -157,4 +157,8 @@ ul {
   border: 1px solid white !important;
   color: var(--secondary) !important;
 }
+
+.general-hr {
+  background-color: rgba(192, 192, 192, 0.89);
+}
 </style>

@@ -5,13 +5,22 @@
     size="sm"
     class="py-2 px-5 texts contact-button btn-dark"
   >
-    Fale com a gente
+    {{ texts_button[lang] }}
   </b-button>
 </template>
 
 <script>
+import StoreMixin from './StoreMixin'
 export default {
   name: "ContactButton",
+  mixins: [StoreMixin],
+  data: () => ({
+    texts_button: {
+      "pt": "Fale com a gente",
+      "en": "Talk with us",
+      "es": "Hable con nosotros"
+    }
+  }),
 };
 </script>
 
