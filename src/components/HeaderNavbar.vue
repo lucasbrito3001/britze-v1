@@ -2,7 +2,7 @@
   <div :class="`wrapper ${isScrolled ? 'scrolled' : ''}`">
     <div :class="`header-comp ${active ? 'extended' : ''}`">
       <main class="header-comp-main">
-        <span class="texts header-brand">britze</span>
+        <a href="#" class="link-brand"><span class="texts header-brand">britze</span></a>
 
         <span
           :class="`menu-sdw ${active ? 'active' : ''}`"
@@ -23,20 +23,22 @@
           </a>
 
           <li @mouseenter="showLangsOptions = true" @mouseleave="showLangsOptions = false">
-            <img 
-              :src="require(`../assets/flags/${$store.state.lang}.png`)" 
-              class="me-2" 
-              width="32"
-              alt="bandeira referente ao idioma selecionado"
-            >
-            <span> {{ $store.state.lang.toUpperCase() }} </span>
+            <span class="navbar-list-items-lang">
+              <img
+                :src="require(`../assets/flags/${$store.state.lang}.png`)"
+                class="me-2"
+                width="32"
+                alt="bandeira referente ao idioma selecionado"
+              >
+              <span> {{ $store.state.lang.toUpperCase() }} </span>
+            </span>
 
             <ul v-if="showLangsOptions" class="list-langs">
-              <li 
-                value="pt" v-for="(lang, idx) in langs" 
-                :key="idx" 
-                @click="showLangOptions = false"
+              <li
                 class="list-langs-items"
+                v-for="(lang, idx) in langs" 
+                :key="idx" 
+                @click="changeLang(lang)"
               > 
                 <img 
                   :src="require(`../assets/flags/${lang}.png`)" 
@@ -71,18 +73,14 @@
 </template>
 
 <script>
-import Texts from './TextsMixins.vue';
+import TEXTS from '../static/texts/navbar.json';
+import StoreMixin from './StoreMixin';
 export default {
-  mixins: [Texts],
-  mounted() {
-    this.active = window.innerWidth > 992;
-
-    document.addEventListener("scroll", () => {
-      this.isScrolled = window.scrollY > 200;
-    });
-  },
+  name: "HeaderNavbar",
+  mixins: [StoreMixin],
   data: () => ({
     active: false,
+    TEXTS: TEXTS,
     isScrolled: false,
     currentLang: 'pt',
     showLangsOptions: false,
@@ -95,19 +93,27 @@ export default {
   computed: {
     itemsNavbar: function () {
       return [
-        { text: this.NAVBAR_TEXTS.about[this.lang], target: "#about" },
-        { text: this.NAVBAR_TEXTS.services[this.lang], target: "#services" },
-        { text: this.NAVBAR_TEXTS.techs[this.lang], target: "#techs" },
-        { text: this.NAVBAR_TEXTS.contacts[this.lang], target: "#contacts" },
+        { text: this.TEXTS.about[this.lang], target: "#about" },
+        { text: this.TEXTS.services[this.lang], target: "#services" },
+        { text: this.TEXTS.techs[this.lang], target: "#techs" },
+        { text: this.TEXTS.contacts[this.lang], target: "#contacts" },
       ]
+    },
+    lang: function () {
+      return this.$store.state.lang
     }
+  },
+  mounted() {
+    this.active = window.innerWidth > 992;
+
+    document.addEventListener("scroll", () => {
+      this.isScrolled = window.scrollY > 200;
+    });
   },
   methods: {
     changeLang(lang) {
       this.$store.commit('changeLang', lang)
-    },
-    showLangs() {
-      this.showLangsOptions = true
+      this.showLangsOptions = false
     }
   }
 };
@@ -115,6 +121,10 @@ export default {
 
 <style scoped lang="scss">
 @import "../static/sass.scss";
+
+.link-brand {
+  text-decoration-color: var(--secondary);
+}
 
 .header-brand {
   font-size: 32px;
@@ -337,6 +347,17 @@ export default {
   padding: 0;
   margin: 0;
   z-index: 10;
+}
+
+.navbar-list-items-lang {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.829);
+  padding: 0 8px;
+}
+
+.navbar-list-items-lang, .list-langs-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .list-langs-items {

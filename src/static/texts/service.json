@@ -1,0 +1,63 @@
+{
+    "title": {
+        "pt": "Nossos serviços",
+        "en": "Our services",
+        "es": "Nuestros servicios"
+    },
+    "services": [
+        {
+            "title": {
+                "pt": "Desenvolvimento web",
+                "en": "Web development",
+                "es": "Desarrollo web"
+            },
+            "desc": {
+                "pt": "Nossa principal habilidade é escrever soluções web para acelerar processos e melhorar o seu negócio",
+                "en": "Our main skill is write web solutions to boost processes and upgrade your business",
+                "es": "Nuestra principal habilidad es escribir soluciones web para acelerar procesos o mejorar tu negocio"
+            },
+            "tag": "development",
+            "img_alt": {
+                "pt": "Um time de desenvolvedores web de 4 pessoas, em uma mesa, 2 sentados e 2 em pé, inserindo componentes em uma página web com nomes de tecnologias, como PHP, C++ e CSS",
+                "en": "A web developers team with 4 people, in a table, 2 standing and 2 sitting, putting components in a web page with technologies names, like PHP, C++ and CSS",
+                "es": "Um equipo de desarolladores web con 4 personas, 2 sentados e 2 de pie, añadindo componentes en una pantalla web com nombres de tecnologías, como PHP, C++ y CSS"
+            } 
+        },
+        {
+            "title": {
+                "pt": "Design gráfico",
+                "en": "Graphic design",
+                "es": "Diseño gráfico"
+            },
+            "desc": {
+                "pt": "Oferecemos serviços de design web entregando UIs elegantes e design gráfico em geral para banners, posts etc...",
+                "en": "We offer services of web design delivering amazing UIs and general graphic design for banners, posts, etc...",
+                "es": "Ofrecemos servicios de diseño web entregando UIs elegantes y diseño grafico en general para apresentaciones, posts, etc..."
+            },
+            "tag": "design",
+            "img_alt": {
+                "pt": "Uma designer gráfica em uma mesa, mexendo em um computador, como se estivesse trabalhando, e ao seu redor se apresentam telas de desenho e ferramentas de photoshop.",
+                "en": "A graphic designer at a table, using a computer, as if was working, and around you have drawing screens, and photoshop tools.",
+                "es": "Una designer gráfica en una mesa, manejando un computador, como si trabajara, y alrededor tiene lienzos de dibujo y hierramentas del photoshop."
+            } 
+        },
+        {
+            "title": {
+                "pt": "Análise de dados",
+                "en": "Data analysis",
+                "es": "Análisis de datos"
+            },
+            "desc": {
+                "pt": "Trabalhamos também com análise de dados de landing page, fazendo alguns relatórios e adaptações baseadas em tipos de usuário que acessam sua página, interesses, etc...",
+                "en": "We also work with landing page data analisys, making some reports and adaptations based on the type of user that access you page, interests, etc..",
+                "es": "Trabajmos también con análisis de datos de landing page, haciendo algunos informes y adaptaciones en función de los tipos de usuario que acceden a tu página, intereses, etc..."
+            },
+            "tag": "data-analisys",
+            "img_alt": {
+                "pt": "Duas pessoas olhando gráficos, como se estivessem analisando dados",
+                "en": "Two people looking graphs, as if was analysing datas",
+                "es": "Dos personas mirando gráficos, como si estuvieran analizando datos"
+            } 
+        }
+    ]
+}

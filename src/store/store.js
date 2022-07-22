@@ -9,7 +9,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         lang: 'pt',
-        texts_home: HOME_TEXTS
+        texts_home: HOME_TEXTS,
+        default_phone_number: '+55 (18) 99735-1747',
+        default_email: 'britze@gmail.com'
     },
     mutations: {
         changeLang(state, newValue) {

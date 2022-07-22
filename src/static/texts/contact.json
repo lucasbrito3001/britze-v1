@@ -14,10 +14,20 @@
         "en": "Name",
         "es": "Nombre"
     },
+    "name_placeholder": {
+        "pt": "Seu nome",
+        "en": "Your name",
+        "es": "Tú nombre"
+    },
     "email": {
         "pt": "e-mail",
         "en": "e-mail",
         "es": "e-mail"
+    },
+    "email_placeholder": {
+        "pt": "seu@email.com",
+        "en": "your@email.com",
+        "es": "tu@email.com"
     },
     "phone": {
         "pt": "Telefone",
@@ -29,10 +39,20 @@
         "en": "Segment",
         "es": "Segmento"
     },
+    "market_placeholder" : {
+        "pt": "Seu segmento de mercado",
+        "en": "Your market segment",
+        "es": "Tú segmento de mercado"
+    },
     "message": {
         "pt": "Mensagem",
         "en": "Message",
         "es": "Mensaje"
+    },
+    "message_placeholder": {
+        "pt": "Sua mensagem",
+        "en": "Your message",
+        "es": "Tú mensaje"
     },
     "send_button": {
         "pt": "Enviar mensagem",
