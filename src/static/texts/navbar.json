@@ -1,0 +1,22 @@
+{
+    "about": {
+        "pt": "Sobre",
+        "en": "About",
+        "es": "Sobre"
+    },
+    "services": {
+        "pt": "Serviços",
+        "en": "Services",
+        "es": "Servicios"
+    },
+    "techs": {
+        "pt": "Tecnologias",
+        "en": "Technologies",
+        "es": "Tecnologías"
+    },
+    "contacts": {
+        "pt": "Contatos",
+        "en": "Contacts",
+        "es": "Contactos"
+    }
+}

@@ -3,20 +3,23 @@
     <header>
       <Header />
     </header>
-    <section id="home" class="pages">
+    <section id="home" class="sections" v-scroll-reveal.reset>
       <HomePage />
     </section>
-    <section id="about" class="pages py-5">
+    <section id="about" class="sections py-5" v-scroll-reveal.reset>
       <AboutPage />
     </section>
-    <section id="services" class="pages py-5">
+    <section id="services" class="sections py-5" v-scroll-reveal.reset>
       <OurServices />
     </section>
-    <section id="techs" class="pages py-5">
+    <section id="techs" class="sections py-5" v-scroll-reveal.reset>
       <OurTechs />
     </section>
-    <section id="contacts" class="pages py-5">
+    <section id="contacts" class="sections py-5" v-scroll-reveal.reset>
       <OurContacts />
+    </section>
+    <section id="footer" class="sections py-5 bg-black">
+      <Footer />
     </section>
   </div>
 </template>
@@ -28,6 +31,7 @@ import AboutPage from "./components/AboutPage.vue";
 import OurServices from "./components/OurServices.vue";
 import OurTechs from "./components/OurTechs.vue";
 import OurContacts from "./components/OurContacts.vue";
+import Footer from "./components/FooterSection.vue"
 export default {
   name: "App",
   components: {
@@ -36,14 +40,16 @@ export default {
     AboutPage,
     OurServices,
     OurTechs,
-    OurContacts
-  },
+    OurContacts,
+    Footer
+  }
 };
 </script>
 
 <style lang="scss">
 @import './static/sass.scss';
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@100;300;400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;500;700&display=swap');
 
 :root {
   --primary: rgb(39, 183, 240);
@@ -51,6 +57,10 @@ export default {
   --dark-primary: rgb(0, 102, 161);
 
   --secondary: #F7365C;
+  --light-secondary: #ffcdd7;
+  --dark-secondary: #180105;
+
+
   --tertiary: #F7EB05;
   --dark: #161616;
 }
@@ -66,7 +76,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.pages {
+.sections {
   max-width: 100vw;
 }
 
@@ -86,11 +96,19 @@ export default {
   background-color: var(--light-primary);
 }
 
-.titles {
+#contacts {
+  background-color: var(--dark);
+  color: white;
+}
+
+.titles, .secondary-titles, .tertiary-titles {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
-  font-size: 46px;
   line-height: 1.5;
+}
+
+.titles {
+  font-size: 46px;
 
   @include lg {
     font-size: 38px;
@@ -98,6 +116,30 @@ export default {
 
   @include md {
     font-size: 32px;
+  }
+}
+
+.secondary-titles {
+  font-size: 36px;
+
+  @include lg {
+    font-size: 30px;
+  }
+
+  @include md {
+    font-size: 24px;
+  }
+}
+
+.tertiary-titles {
+  font-size: 28px;
+
+  @include lg {
+    font-size: 25px;
+  }
+
+  @include md {
+    font-size: 22px;
   }
 }
 
@@ -120,5 +162,21 @@ ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+.btn-secondary {
+  background-color: var(--secondary) !important;
+  border: 1px solid var(--secondary) !important;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: white !important;
+  border: 1px solid white !important;
+  color: var(--secondary) !important;
+}
+
+.general-hr {
+  background-color: rgba(192, 192, 192, 0.89);
 }
 </style>

@@ -2,7 +2,7 @@
   <div :class="`wrapper ${isScrolled ? 'scrolled' : ''}`">
     <div :class="`header-comp ${active ? 'extended' : ''}`">
       <main class="header-comp-main">
-        <span class="texts header-brand">britze</span>
+        <a href="#" class="link-brand"><span class="texts header-brand">britze</span></a>
 
         <span
           :class="`menu-sdw ${active ? 'active' : ''}`"
@@ -21,6 +21,36 @@
               {{ item.text }}
             </li>
           </a>
+
+          <li @mouseenter="showLangsOptions = true" @mouseleave="showLangsOptions = false">
+            <span class="navbar-list-items-lang">
+              <img
+                :src="require(`../assets/flags/${$store.state.lang}.png`)"
+                class="me-2"
+                width="32"
+                alt="bandeira referente ao idioma selecionado"
+              >
+              <span> {{ $store.state.lang.toUpperCase() }} </span>
+            </span>
+
+            <ul v-if="showLangsOptions" class="list-langs">
+              <li
+                class="list-langs-items"
+                v-for="(lang, idx) in langs" 
+                :key="idx" 
+                @click="changeLang(lang)"
+              > 
+                <img 
+                  :src="require(`../assets/flags/${lang}.png`)" 
+                  class="me-2" 
+                  width="32"
+                  alt="bandeira referente ao idioma selecionado"
+                >
+                {{ lang.toUpperCase() }} 
+              </li>
+            </ul>
+          </li>
+
           <li class="navbar-list-social-networks">
             <ul class="navbar-list-social-networks-items">
               <a href="https://instagram.com/lucasdebrito12/" target="_blank" class="navbar-list-items-link">
@@ -43,9 +73,36 @@
 </template>
 
 <script>
-import Texts from './TextsMixins.vue';
+import TEXTS from '../static/texts/navbar.json';
+import StoreMixin from './StoreMixin';
 export default {
-  mixins: [Texts],
+  name: "HeaderNavbar",
+  mixins: [StoreMixin],
+  data: () => ({
+    active: false,
+    TEXTS: TEXTS,
+    isScrolled: false,
+    currentLang: 'pt',
+    showLangsOptions: false,
+    langs: [
+      "pt",
+      "en",
+      "es"
+    ]
+  }),
+  computed: {
+    itemsNavbar: function () {
+      return [
+        { text: this.TEXTS.about[this.lang], target: "#about" },
+        { text: this.TEXTS.services[this.lang], target: "#services" },
+        { text: this.TEXTS.techs[this.lang], target: "#techs" },
+        { text: this.TEXTS.contacts[this.lang], target: "#contacts" },
+      ]
+    },
+    lang: function () {
+      return this.$store.state.lang
+    }
+  },
   mounted() {
     this.active = window.innerWidth > 992;
 
@@ -53,21 +110,21 @@ export default {
       this.isScrolled = window.scrollY > 200;
     });
   },
-  data: () => ({
-    active: false,
-    isScrolled: false,
-    itemsNavbar: [
-      { text: "Sobre", target: "#about" },
-      { text: "Serviços", target: "#services" },
-      { text: "Tecnologias", target: "#techs" },
-      { text: "Contato", target: "#contacts" },
-    ],
-  }),
+  methods: {
+    changeLang(lang) {
+      this.$store.commit('changeLang', lang)
+      this.showLangsOptions = false
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
 @import "../static/sass.scss";
+
+.link-brand {
+  text-decoration-color: var(--secondary);
+}
 
 .header-brand {
   font-size: 32px;
@@ -135,7 +192,7 @@ export default {
 
 .wrapper.scrolled {
   height: 7.5vh;
-  background-color: rgba(0, 0, 0, 0.747);
+  background-color: rgba(0, 0, 0, 0.856);
 
   @include lg {
     height: 6.5vh;
@@ -281,5 +338,39 @@ export default {
 
 .navbar-list-social-networks-items li {
   font-size: 28px;
+}
+
+.list-langs {
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.navbar-list-items-lang {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.829);
+  padding: 0 8px;
+}
+
+.navbar-list-items-lang, .list-langs-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-langs-items {
+  padding: 16px 24px;
+  text-align: center;
+  transition: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-langs-items:hover {
+  background-color: var(--primary);
+  color: white;
 }
 </style>

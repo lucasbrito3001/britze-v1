@@ -1,7 +1,17 @@
 {
-    "pt": {
-        "about_title": "Somos a britze, uma empresa de design e desenvolvimento de soluções em tecnologia.",
-        "about_first_text": "Nossa missão é oferecer soluções em tecnologia nas mais diversas áreas, seja com uma landing page para atrair clientes para o seu negócio, ou com uma ferramenta específica para automatizar ou aprimorar algum processo.",
-        "about_second_text": "Trabalhamos com base na tecnologia, boas práticas, comunicação e empatia, para alcançar resultados incríveis com nossos clientes."
-    }
+    "about_title": {
+        "pt": "Somos a britze, uma empresa de design e desenvolvimento de soluções em tecnologia.",
+        "en": "We are britze, a design and development company for technological solutions",
+        "es": "Somos britze, una organización de diseño y desarrollo de soluciones en tecnología"
+    },
+    "about_first_text": {
+        "pt": "Nossa missão é oferecer soluções em tecnologia nas mais diversas áreas, seja com uma landing page para atrair clientes para o seu negócio, ou com uma ferramenta específica para automatizar ou aprimorar algum processo.",
+        "en": "Our mission is to offer technological solutions, to boost/automate any process or attract customers to your business expanding your reach",
+        "es": "Nuestra misión es ofrecer soluciones en tecnología en diversos áreas, sea para mejorar/automatizar algun proceso o traer nuevos clientes para su negocio, ampliando el alcance tuyo"
+    },
+    "about_second_text": {
+        "pt": "Trabalhamos com base na tecnologia, boas práticas, comunicação e empatia, para alcançar resultados incríveis com nossos clientes.",
+        "en": "We work based on technology, best practices, communication and empathy, to reach amazing results with our customers.",
+        "es": "Trabajamos baseados en tecnología, buenas practicas, comunicación y empatía, para lograr resultados increíbles con nuestros clientes"
+    } 
 }

@@ -1,0 +1,35 @@
+{
+    "contacts": {
+        "title": {
+            "pt": "Contatos",
+            "en": "Contacts",
+            "es": "Contactos"
+        },
+        "content": {
+            "social_networks": {
+                "pt": "redes sociais",
+                "en": "social networks",
+                "es": "redes sociales"
+            }
+        }
+    },
+    "references": {
+        "title": {
+            "pt": "Referências",
+            "en": "References",
+            "es": "Referencias"
+        },
+        "content": {
+            "images": {
+                "pt": "imagens",
+                "en": "images",
+                "es": "imagenes"
+            },
+            "icons": {
+                "pt": "ícones",
+                "en": "icons",
+                "es": "iconos"
+            }
+        }
+    }
+}

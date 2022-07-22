@@ -1,6 +1,12 @@
 {
-    "pt": {
-        "main_title": "Consultoria e transformação digital",
-        "main_text": "Somos a <strong class='britze-name'>britze</strong>, uma empresa de desenvolvimento e design de aplicações web. Está pensando em aderir ao mundo digital, e colocar a sua empresa na internet?"
+    "main_title": {
+        "pt": "Consultoria e transformação digital",
+        "en": "Consultancy and digital transformation",
+        "es": "Consultoría y transformación digital"
+    },
+    "main_text": {
+        "pt": "Somos a britze, uma empresa de desenvolvimento e design de aplicações web. Está pensando em aderir ao mundo digital, e colocar a sua empresa na internet?",
+        "en": "We are britze, a company of web application development and design. Are you thinking about entering the digital world and putting your business online?",
+        "es": "Somos britze, una organización de desarrollo y diseño de aplicaciones web. Estás piensando en acceder al mundo digital y poner tu negocio en línea?"
     }
 }
