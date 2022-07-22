@@ -1,0 +1,42 @@
+{
+    "title": {
+        "pt": "Contatos",
+        "en": "Contacts",
+        "es": "Contactos"
+    },
+    "secondary": {
+        "pt": "E aí, bora começar um projeto juntos e dar um upgrade no seu negócio?",
+        "en": "So, let's start a new project with us to upgrade your business?",
+        "es": "Entonces, que tal comenzar un nuevo proyecto con nosotros y dar un upgrade en su negocio?"
+    },
+    "name": {
+        "pt": "Nome",
+        "en": "Name",
+        "es": "Nombre"
+    },
+    "email": {
+        "pt": "e-mail",
+        "en": "e-mail",
+        "es": "e-mail"
+    },
+    "phone": {
+        "pt": "Telefone",
+        "en": "Phone",
+        "es": "Teléfono"
+    },
+    "market": {
+        "pt": "Segmento",
+        "en": "Segment",
+        "es": "Segmento"
+    },
+    "message": {
+        "pt": "Mensagem",
+        "en": "Message",
+        "es": "Mensaje"
+    },
+    "send_button": {
+        "pt": "Enviar mensagem",
+        "en": "Send message",
+        "es": "Enviar mensaje"
+    }
+}

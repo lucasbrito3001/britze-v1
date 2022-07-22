@@ -21,6 +21,34 @@
               {{ item.text }}
             </li>
           </a>
+
+          <li @mouseenter="showLangsOptions = true" @mouseleave="showLangsOptions = false">
+            <img 
+              :src="require(`../assets/flags/${$store.state.lang}.png`)" 
+              class="me-2" 
+              width="32"
+              alt="bandeira referente ao idioma selecionado"
+            >
+            <span> {{ $store.state.lang.toUpperCase() }} </span>
+
+            <ul v-if="showLangsOptions" class="list-langs">
+              <li 
+                value="pt" v-for="(lang, idx) in langs" 
+                :key="idx" 
+                @click="showLangOptions = false"
+                class="list-langs-items"
+              > 
+                <img 
+                  :src="require(`../assets/flags/${lang}.png`)" 
+                  class="me-2" 
+                  width="32"
+                  alt="bandeira referente ao idioma selecionado"
+                >
+                {{ lang.toUpperCase() }} 
+              </li>
+            </ul>
+          </li>
+
           <li class="navbar-list-social-networks">
             <ul class="navbar-list-social-networks-items">
               <a href="https://instagram.com/lucasdebrito12/" target="_blank" class="navbar-list-items-link">
@@ -56,13 +84,32 @@ export default {
   data: () => ({
     active: false,
     isScrolled: false,
-    itemsNavbar: [
-      { text: "Sobre", target: "#about" },
-      { text: "Serviços", target: "#services" },
-      { text: "Tecnologias", target: "#techs" },
-      { text: "Contato", target: "#contacts" },
-    ],
+    currentLang: 'pt',
+    showLangsOptions: false,
+    langs: [
+      "pt",
+      "en",
+      "es"
+    ]
   }),
+  computed: {
+    itemsNavbar: function () {
+      return [
+        { text: this.NAVBAR_TEXTS.about[this.lang], target: "#about" },
+        { text: this.NAVBAR_TEXTS.services[this.lang], target: "#services" },
+        { text: this.NAVBAR_TEXTS.techs[this.lang], target: "#techs" },
+        { text: this.NAVBAR_TEXTS.contacts[this.lang], target: "#contacts" },
+      ]
+    }
+  },
+  methods: {
+    changeLang(lang) {
+      this.$store.commit('changeLang', lang)
+    },
+    showLangs() {
+      this.showLangsOptions = true
+    }
+  }
 };
 </script>
 
@@ -281,5 +328,28 @@ export default {
 
 .navbar-list-social-networks-items li {
   font-size: 28px;
+}
+
+.list-langs {
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.list-langs-items {
+  padding: 16px 24px;
+  text-align: center;
+  transition: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-langs-items:hover {
+  background-color: var(--primary);
+  color: white;
 }
 </style>

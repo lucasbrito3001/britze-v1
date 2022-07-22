@@ -51,6 +51,10 @@ export default {
   --dark-primary: rgb(0, 102, 161);
 
   --secondary: #F7365C;
+  --light-secondary: #ffcdd7;
+  --dark-secondary: #180105;
+
+
   --tertiary: #F7EB05;
   --dark: #161616;
 }
@@ -84,6 +88,11 @@ export default {
 
 #services {
   background-color: var(--light-primary);
+}
+
+#contacts {
+  background-color: var(--dark);
+  color: white;
 }
 
 .titles {
@@ -120,5 +129,17 @@ ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+.btn-secondary {
+  background-color: var(--secondary) !important;
+  border: 1px solid var(--secondary) !important;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: white !important;
+  border: 1px solid white !important;
+  color: var(--secondary) !important;
 }
 </style>
