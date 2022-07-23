@@ -48,7 +48,7 @@
                         </b-col>
 
                         <b-col class="mt-4">
-                            <b-button class="btn-secondary"> {{ TEXTS.send_button[lang] }} </b-button>
+                            <b-button class="btn-secondary" @click=""> {{ TEXTS.send_button[lang] }} </b-button>
                         </b-col>
                     </b-row>
                 </b-col>
@@ -60,6 +60,7 @@
 <script>
 import TEXTS from '../static/texts/contact.json'
 import StoreMixin from './StoreMixin'
+import { mailer } from '../services/mailer.js'
 export default {
     name: 'OurContacts',
     mixins: [StoreMixin],
@@ -69,6 +70,11 @@ export default {
     computed: {
         lang: function () {
             return this.$store.state.lang
+        }
+    },
+    methods: {
+        sendEmail(payload) {
+            mailer(payload)
         }
     }
 }
