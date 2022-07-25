@@ -2,7 +2,7 @@ import { validate } from 'email-validator';
 import { phone } from 'phone';
 
 const checkString = (string) => {
-    return string && typeof string === 'string' && string.length > 0
+    return string && typeof string === 'string'
 }
 
 const checkEmail = (email, validator = validate) => {

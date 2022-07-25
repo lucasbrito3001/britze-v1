@@ -72,7 +72,7 @@
 <script>
 import TEXTS from "../static/texts/footer.json";
 import NAVBAR_TEXTS from "../static/texts/navbar.json";
-import StoreMixin from "./StoreMixin.vue";
+import StoreMixin from "./mixins/StoreMixin.vue";
 export default {
   name: "FooterSection",
   mixins: [StoreMixin],

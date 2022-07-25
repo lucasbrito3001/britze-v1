@@ -74,7 +74,7 @@
 
 <script>
 import TEXTS from '../static/texts/navbar.json';
-import StoreMixin from './StoreMixin';
+import StoreMixin from './mixins/StoreMixin.vue';
 export default {
   name: "HeaderNavbar",
   mixins: [StoreMixin],

@@ -37,7 +37,7 @@
 
 <script>
 import TEXTS from "../static/texts/tech.json";
-import StoreMixin from "./StoreMixin";
+import StoreMixin from "./mixins/StoreMixin.vue";
 import VueSlickCarousel from "vue-slick-carousel";
 export default {
   name: "OurTechs",

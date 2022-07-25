@@ -1,14 +1,18 @@
 const API_MAIL_ROUTE = "https://api.emailjs.com/api/v1.0/email/send"
 
-import axios from 'axios'
+import { requester } from './requester'
 import { checkEmail, checkPhone, checkString } from "./validators"
 
-const mailerController = (payload, validator = validateVariables) => {
-    const resultValidations = validator({...payload})
+const mailerController = async (
+    payload,
+    validator = validateVariables,
+    mailer = sendMail
+) => {
+    const resultValidations = validator({ ...payload })
 
-    if(!resultValidations.status) return resultValidations
+    if (!resultValidations.status) return resultValidations
 
-    sendMail()
+    return await mailer({ ...payload })
 }
 
 const validateVariables = (
@@ -28,8 +32,9 @@ const validateVariables = (
     const errors = []
 
     const resultValidation = ['name', 'email', 'phone', 'market', 'message'].every(key => {
-        const validate = validators[key]
-        if(validate) return true
+        const validate = validators[key] || false
+
+        if (validate) return true
 
         errors.push(key)
         return false
@@ -38,19 +43,22 @@ const validateVariables = (
     return { status: resultValidation, errors }
 }
 
-const sendMail = async () => {
-    let message = "TESTEEEE"
+const sendMail = async ({ name, email, phone, market, message }) => {
     const payload = {
-        service_id: 'service_jigglvu',
+        service_id: 'service_jigglv',
         template_id: 'template_z7vvltg',
         user_id: 'XxUDmDN8hgP4LUd_Q',
-        template_params: {
-            'message': message,
-        }
+        template_params: { name, email, phone, market, message }
     }
 
-    const res = await axios.post(API_MAIL_ROUTE, payload)
-    return res
+    try {
+        await requester('post', [API_MAIL_ROUTE, payload])
+        
+        return { code: 200, status: true }
+    } catch (error) {
+        return { code: 400, status: false }
+    }
+
 }
 
-export { mailerController }
+export { mailerController, validateVariables }

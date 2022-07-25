@@ -3,19 +3,36 @@
         <b-container>
             <b-row>
                 <b-col>
-                    <h1 class="titles"> {{ TEXTS.title[lang] }} </h1>
+                    <h1 class="titles">{{ TEXTS.title[lang] }}</h1>
                 </b-col>
             </b-row>
 
             <b-row class="mt-3 mt-lg-5 p-3">
-                <b-col cols="12" md="12" lg="6" class="p-0 pe-lg-4 mb-4 mb-lg-0">
-                    <h2 class="texts contact-texts"> {{ TEXTS.secondary[lang] }} </h2>
-                    <p class="mt-5 texts d-flex align-items-center contacts-items"> 
-                        <img class="me-2" :src="require('../assets/phone.png')" width="32"/>
+                <b-col
+                    cols="12"
+                    md="12"
+                    lg="6"
+                    class="p-0 pe-lg-4 mb-4 mb-lg-0"
+                >
+                    <h2 class="texts contact-texts">
+                        {{ TEXTS.secondary[lang] }}
+                    </h2>
+                    <p
+                        class="mt-5 texts d-flex align-items-center contacts-items"
+                    >
+                        <img
+                            class="me-2"
+                            :src="require('../assets/phone.png')"
+                            width="32"
+                        />
                         {{ $store.state.default_phone_number }}
                     </p>
-                    <p class="texts d-flex align-items-center contacts-items"> 
-                        <img class="me-2" :src="require('../assets/mail.png')" width="32"/>
+                    <p class="texts d-flex align-items-center contacts-items">
+                        <img
+                            class="me-2"
+                            :src="require('../assets/mail.png')"
+                            width="32"
+                        />
                         {{ $store.state.default_email }}
                     </p>
                 </b-col>
@@ -24,31 +41,72 @@
                     <b-row class="shadow-lg contact-form px-2 py-3">
                         <b-col cols="12">
                             <label for="name"> {{ TEXTS.name[lang] }}: </label>
-                            <b-input id="name" :placeholder="TEXTS.name_placeholder[lang]" class="contact-inputs"></b-input>
+                            <b-input
+                                id="name"
+                                :placeholder="TEXTS.name_placeholder[lang]"
+                                class="contact-inputs"
+                                v-model="contactInfos.name"
+                                :state="!missingFields.includes('name')"
+                            ></b-input>
                         </b-col>
 
                         <b-col cols="12" class="mt-3">
-                            <label for="email"> {{ TEXTS.email[lang] }}: </label>
-                            <b-input id="email" :placeholder="TEXTS.email_placeholder[lang]" class="contact-inputs"></b-input>
+                            <label for="email">
+                                {{ TEXTS.email[lang] }}:
+                            </label>
+                            <b-input
+                                id="email"
+                                :placeholder="TEXTS.email_placeholder[lang]"
+                                class="contact-inputs"
+                                v-model="contactInfos.email"
+                            ></b-input>
                         </b-col>
 
                         <b-col cols="12" class="mt-3">
-                            <label for="phone"> {{ TEXTS.phone[lang] }}: </label>
-                            <b-input id="phone" placeholder="(xx) xxxx-xxxx" class="contact-inputs"></b-input>
+                            <label for="phone">
+                                {{ TEXTS.phone[lang] }}:
+                            </label>
+                            <b-input
+                                id="phone"
+                                placeholder="(xx) xxxx-xxxx"
+                                v-mask="'+55 (##) #####-####'"
+                                class="contact-inputs"
+                                v-model="contactInfos.phone"
+                            ></b-input>
                         </b-col>
 
                         <b-col cols="12" class="mt-3">
-                            <label for="market"> {{ TEXTS.market[lang] }}: </label>
-                            <b-input id="market" :placeholder="TEXTS.market_placeholder[lang]" class="contact-inputs"></b-input>
+                            <label for="market">
+                                {{ TEXTS.market[lang] }}:
+                            </label>
+                            <b-input
+                                id="market"
+                                :placeholder="TEXTS.market_placeholder[lang]"
+                                class="contact-inputs"
+                                v-model="contactInfos.market"
+                            ></b-input>
                         </b-col>
 
                         <b-col cols="12" class="mt-3">
-                            <label for="message"> {{ TEXTS.message[lang] }}: </label>
-                            <b-textarea id="message" :placeholder="TEXTS.message_placeholder[lang]" rows="8" class="contact-inputs"></b-textarea>
+                            <label for="message">
+                                {{ TEXTS.message[lang] }}:
+                            </label>
+                            <b-textarea
+                                id="message"
+                                :placeholder="TEXTS.message_placeholder[lang]"
+                                rows="8"
+                                class="contact-inputs"
+                                v-model="contactInfos.message"
+                            ></b-textarea>
                         </b-col>
 
                         <b-col class="mt-4">
-                            <b-button class="btn-secondary" @click=""> {{ TEXTS.send_button[lang] }} </b-button>
+                            <b-button
+                                class="btn-secondary"
+                                @click="sendEmail()"
+                            >
+                                {{ TEXTS.send_button[lang] }}
+                            </b-button>
                         </b-col>
                     </b-row>
                 </b-col>
@@ -58,30 +116,64 @@
 </template>
 
 <script>
-import TEXTS from '../static/texts/contact.json'
-import StoreMixin from './StoreMixin'
-import { mailer } from '../services/mailer.js'
+import TEXTS from "../static/texts/contact.json";
+import REQ_TEXTS from "../static/texts/request.json";
+import StoreMixin from "./mixins/StoreMixin.vue";
+import GeneralMixin from "./mixins/GeneralMixin.vue";
+import { mailerController } from "../services/mailer.js";
+import { validateVariables } from "../services/mailer";
 export default {
-    name: 'OurContacts',
-    mixins: [StoreMixin],
+    name: "OurContacts",
+    mixins: [StoreMixin, GeneralMixin],
     data: () => ({
-        TEXTS: TEXTS
+        TEXTS: TEXTS,
+        REQ_TEXTS: REQ_TEXTS,
+        contactInfos: {
+            name: null,
+            email: null,
+            phone: null,
+            market: null,
+            message: null,
+        },
+        missingFields: []
     }),
     computed: {
         lang: function () {
-            return this.$store.state.lang
-        }
+            return this.$store.state.lang;
+        },
     },
     methods: {
-        sendEmail(payload) {
-            mailer(payload)
-        }
-    }
-}
+        async sendEmail(
+            payload = {
+                name: this.contactInfos.name,
+                email: this.contactInfos.email,
+                phone: this.contactInfos.phone,
+                market: this.contactInfos.market,
+                message: this.contactInfos.message,
+            }
+        ) {
+            const resultValidation = this.validateForm()
+
+            if(!resultValidation.status) {
+                this.missingFields = resultValidation.errors
+                return this.showToast(this.TEXTS.formValidations[this.lang], { type: 'error' })
+            }
+
+            const { code } = await mailerController(payload);
+
+            this.showToast(this.REQ_TEXTS.message["" + code][this.lang], {
+                type: code === 200 ? "success" : "error",
+            });
+        },
+        validateForm(payload = this.contactInfos, validator = validateVariables) {
+            return validator(payload);
+        },
+    },
+};
 </script>
 
 <style scoped lang="scss">
-@import '../static/sass.scss';
+@import "../static/sass.scss";
 
 .wrapper {
     min-height: 40vh;
@@ -93,7 +185,7 @@ export default {
     border: none;
     border-bottom: 1px solid white;
     border-radius: 0px;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .contact-inputs:focus {
