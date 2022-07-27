@@ -1,7 +1,7 @@
 const API_MAIL_ROUTE = "https://api.emailjs.com/api/v1.0/email/send"
 
 import { requester } from './requester'
-import { checkEmail, checkPhone, checkString } from "./validators"
+import { checkEmail, checkString } from "./validators"
 
 const mailerController = async (
     payload,
@@ -16,36 +16,33 @@ const mailerController = async (
 }
 
 const validateVariables = (
-    { name, email, phone, market, message },
+    { name, email, market, message },
     validatorString = checkString,
-    validatorEmail = checkEmail,
-    validatorPhone = checkPhone
+    validatorEmail = checkEmail
 ) => {
     const validators = {
         'name': validatorString(name),
         'market': validatorString(market),
         'message': validatorString(message),
         'email': validatorEmail(email),
-        'phone': validatorPhone(phone)
     }
 
     const errors = []
-
-    const resultValidation = ['name', 'email', 'phone', 'market', 'message'].every(key => {
+    
+    const fields = ['name', 'email', 'phone', 'market', 'message']
+    fields.forEach(key => {
         const validate = validators[key] || false
 
         if (validate) return true
-
         errors.push(key)
-        return false
     })
 
-    return { status: resultValidation, errors }
+    return { status: errors.length === 0, errors }
 }
 
 const sendMail = async ({ name, email, phone, market, message }) => {
     const payload = {
-        service_id: 'service_jigglv',
+        service_id: 'service_jigglvu',
         template_id: 'template_z7vvltg',
         user_id: 'XxUDmDN8hgP4LUd_Q',
         template_params: { name, email, phone, market, message }

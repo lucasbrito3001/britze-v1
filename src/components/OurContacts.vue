@@ -46,7 +46,7 @@
                                 :placeholder="TEXTS.name_placeholder[lang]"
                                 class="contact-inputs"
                                 v-model="contactInfos.name"
-                                :state="!missingFields.includes('name')"
+                                :state="setInputsState('name')"
                             ></b-input>
                         </b-col>
 
@@ -59,19 +59,7 @@
                                 :placeholder="TEXTS.email_placeholder[lang]"
                                 class="contact-inputs"
                                 v-model="contactInfos.email"
-                            ></b-input>
-                        </b-col>
-
-                        <b-col cols="12" class="mt-3">
-                            <label for="phone">
-                                {{ TEXTS.phone[lang] }}:
-                            </label>
-                            <b-input
-                                id="phone"
-                                placeholder="(xx) xxxx-xxxx"
-                                v-mask="'+55 (##) #####-####'"
-                                class="contact-inputs"
-                                v-model="contactInfos.phone"
+                                :state="setInputsState('email')"
                             ></b-input>
                         </b-col>
 
@@ -84,6 +72,7 @@
                                 :placeholder="TEXTS.market_placeholder[lang]"
                                 class="contact-inputs"
                                 v-model="contactInfos.market"
+                                :state="setInputsState('market')"
                             ></b-input>
                         </b-col>
 
@@ -97,6 +86,7 @@
                                 rows="8"
                                 class="contact-inputs"
                                 v-model="contactInfos.message"
+                                :state="setInputsState('message')"
                             ></b-textarea>
                         </b-col>
 
@@ -129,11 +119,11 @@ export default {
         TEXTS: TEXTS,
         REQ_TEXTS: REQ_TEXTS,
         contactInfos: {
-            name: null,
-            email: null,
-            phone: null,
-            market: null,
-            message: null,
+            name: "",
+            email: "",
+            phone: "",
+            market: "",
+            message: "",
         },
         missingFields: []
     }),
@@ -168,6 +158,11 @@ export default {
         validateForm(payload = this.contactInfos, validator = validateVariables) {
             return validator(payload);
         },
+        setInputsState(property) {
+            return this.contactInfos[property].length === 0
+                ? null
+                : !this.missingFields.includes(property) && this.contactInfos[property].length > 0
+        }
     },
 };
 </script>

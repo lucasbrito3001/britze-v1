@@ -60,8 +60,8 @@
         "es": "Enviar mensaje"
     },
     "formValidations": {
-        "pt": "Alguns campos não foram preenchidos, verifique e tente novamente",
-        "en": "Some fields aren't filled, verify and try again",
-        "es": "Algunos campos no fueran completos, verifique y intente nuevamente"
+        "pt": "Alguns campos não foram preenchidos ou não possuem o formato correto, verifique e tente novamente",
+        "en": "Some fields aren't filled in or are not formatted correctly, verify and try again",
+        "es": "Algunos campos no fueran completos o no tienen el formato correcto, verifique y intente nuevamente"
     }
 }

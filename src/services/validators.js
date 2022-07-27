@@ -10,6 +10,8 @@ const checkEmail = (email, validator = validate) => {
 }
 
 const checkPhone = (number, validator = phone) => {
+    console.log(number)
+    console.log('PHONE: ', validator(number, { country: 'BR' }))
     return validator(number);
 }
 
