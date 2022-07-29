@@ -33,7 +33,7 @@
 
 <script>
 import TEXTS from '../static/texts/service.json'
-import StoreMixin from './StoreMixin'
+import StoreMixin from './mixins/StoreMixin.vue'
 export default {
     name: "OurServices",
     mixins: [StoreMixin],

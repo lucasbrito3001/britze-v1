@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import StoreMixin from './StoreMixin'
+import StoreMixin from './mixins/StoreMixin.vue'
 export default {
   name: "ContactButton",
   mixins: [StoreMixin],

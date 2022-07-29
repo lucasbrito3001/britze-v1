@@ -20,7 +20,7 @@
 <script>
 import TEXTS from '../static/texts/about.json'
 import ContactButton from './ContactButton.vue'
-import StoreMixin from './StoreMixin'
+import StoreMixin from './mixins/StoreMixin.vue'
 export default {
   name: "AboutUs",
   mixins: [StoreMixin],
