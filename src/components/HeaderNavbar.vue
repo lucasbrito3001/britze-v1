@@ -208,7 +208,7 @@ export default {
   height: 100%;
   max-width: 1200px;
   margin: auto;
-  padding: 15px 0px;
+  padding: 15px 45px;
   transition: 0.4s;
 
   @include lg {

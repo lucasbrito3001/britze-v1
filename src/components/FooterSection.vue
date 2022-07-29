@@ -94,6 +94,12 @@ export default {
 .titles {
   font-family: "Comfortaa", sans-serif;
 }
+.tertiary-titles {
+  color: rgb(63, 63, 63);
+}
+.tertiary-titles, .texts {
+  font-size: 18px;
+}
 .references-links {
     color: white;
     transition: .3s;

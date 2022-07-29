@@ -29,7 +29,7 @@ const validateVariables = (
 
     const errors = []
     
-    const fields = ['name', 'email', 'phone', 'market', 'message']
+    const fields = ['name', 'email', 'market', 'message']
     fields.forEach(key => {
         const validate = validators[key] || false
 

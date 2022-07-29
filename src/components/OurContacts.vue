@@ -154,14 +154,28 @@ export default {
             this.showToast(this.REQ_TEXTS.message["" + code][this.lang], {
                 type: code === 200 ? "success" : "error",
             });
+
+            this.clearForm()
         },
         validateForm(payload = this.contactInfos, validator = validateVariables) {
             return validator(payload);
         },
         setInputsState(property) {
-            return this.contactInfos[property].length === 0
-                ? null
-                : !this.missingFields.includes(property) && this.contactInfos[property].length > 0
+            if(this.missingFields.length > 0) {
+                return !this.missingFields.includes(property) ? null : false
+            }
+
+            return null
+        },
+        clearForm() {
+            this.missingFields = []
+            this.contactInfos = {
+                name: "",
+                email: "",
+                phone: "",
+                market: "",
+                message: "",
+            };
         }
     },
 };
