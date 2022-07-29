@@ -32,7 +32,7 @@
 <script>
 import ContactButton from "./ContactButton.vue"
 import TEXTS from '../static/texts/home.json'
-import StoreMixin from './StoreMixin'
+import StoreMixin from './mixins/StoreMixin.vue'
 export default {
   name: "HomeSectiom",
   mixins: [StoreMixin],

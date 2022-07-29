@@ -1,28 +1,30 @@
 import Vue from 'vue'
 import App from './App.vue'
-import store from './store/store'
-import { BootstrapVue, IconsPlugin, BIconInstagram, BIconLinkedin, BIconWhatsapp } from 'bootstrap-vue'
-import VueScrollReveal from 'vue-scroll-reveal';
- 
 
-// Import Bootstrap and BootstrapVue CSS files (order is important)
+// External stylesheets ================
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-// vue-slick-carousel styles
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-// optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import "vue-toastification/dist/index.css";
 
-Vue.config.productionTip = false
-Vue.prototype.$store = store;
-Vue.use(BootstrapVue, IconsPlugin)
+// Vuex ================================
+import store from './store/store'
+Vue.prototype.$store = store; // Declaring $store to use the store of Vuex in all components
+
+
+// Bootstrap icons components ==========
+import { BootstrapVue, IconsPlugin, BIconInstagram, BIconLinkedin, BIconWhatsapp } from 'bootstrap-vue'
 
 Vue.component('BIconInstagram', BIconInstagram)
 Vue.component('BIconLinkedin', BIconLinkedin)
 Vue.component('BIconWhatsapp', BIconWhatsapp)
 
-// OR specifying custom default options for all uses of the directive
+Vue.use(BootstrapVue, IconsPlugin)
+
+
+// Vue scroll reveal ===================
+import VueScrollReveal from 'vue-scroll-reveal';
 Vue.use(VueScrollReveal, {
   class: 'v-scroll-reveal', // A CSS class applied to elements with the v-scroll-reveal directive; useful for animation overrides.
   duration: 1500,
@@ -31,6 +33,16 @@ Vue.use(VueScrollReveal, {
   mobile: true
 });
 
+// Vue mask ============================
+import VueMask from 'v-mask'
+Vue.use(VueMask);
+
+// Vue toastification ==================
+import Toasts from 'vue-toastification'
+Vue.use(Toasts)
+
+// Instance vue ========================
+Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   store

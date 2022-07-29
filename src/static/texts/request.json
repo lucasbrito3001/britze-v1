@@ -1,0 +1,14 @@
+{
+    "message": {
+        "200": {
+            "pt": "E-mail enviado com sucesso!",
+            "en": "Email sended successfully!",
+            "es": "Email enviado correctamente!"
+        },
+        "400": {
+            "pt": "Desculpa, tivemos um erro interno para enviar o email, espere um pouquinho e tente novamente, ou nos chame de outra forma",
+            "en": "Sorry, we have an internal error to send the email, wait a few minutes and try again later, or try to contact by other way",
+            "es": "Disculpa, tuvimos un error interno al enviar el email, espere un ratito y intente de nuevo, o nos llame de otra forma"
+        }
+    }
+}
