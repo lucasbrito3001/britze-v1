@@ -103,7 +103,7 @@ export default {
       return this.$store.state.lang
     }
   },
-  mounted() {
+  created() {
     this.active = window.innerWidth > 992;
 
     document.addEventListener("scroll", () => {

@@ -51,7 +51,6 @@ export default {
       arrows: false,
       dots: false,
       infinite: true,
-      slidesToShow: 8,
       slidesToScroll: 1,
       autoplay: true,
       speed: 1000,
@@ -62,7 +61,7 @@ export default {
       pauseOnHover: false,
     },
   }),
-  mounted() {
+  created() {
     const maxQuantity = parseInt(window.innerWidth / 120)
     this.carouselSettings.slidesToShow = maxQuantity > 8 ? 8 : maxQuantity
   }
