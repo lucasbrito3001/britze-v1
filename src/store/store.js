@@ -11,7 +11,7 @@ export default new Vuex.Store({
         lang: 'pt',
         texts_home: HOME_TEXTS,
         default_phone_number: '+55 (18) 99735-1747',
-        default_email: 'britze@gmail.com',
+        default_email: 'britzeconsultoria@gmail.com',
         reference_images: 'https://storyset.com/',
         reference_icons: 'https://icons8.com.br/'
     },
